@@ -2,19 +2,32 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import dashboardCtrl from './dashboardCtrl';
-import tpl from './dashboard.html'
+import headerTpl from '../../public/head_nav.html';
+import tpl from './dashboard.html';
+import List from '../../utils/list/directive';
+import DashboardServ from './dashboardServ'
 
-var config = function($stateProvider){
+//console.log(List);
+
+var config = $stateProvider => {
   $stateProvider
   .state('dashboard',{
       url:'/dashboard',
-      template:tpl,
-      controller:'dashboardCtrl'
+      views:{
+          'header':{
+              template:headerTpl
+          },
+          'main':{
+              template:tpl,
+              controller:'dashboardCtrl'
+          }
+      }
   });
 }
 config.$inject = ['$stateProvider'];
 
-export default angular.module('dbmod',[uiRouter])
+export default angular.module('modules.dashboard',[uiRouter,List,DashboardServ])
                       .config(config)
                       .controller('dashboardCtrl',dashboardCtrl)
+                      //.directive('list',List)
                       .name;

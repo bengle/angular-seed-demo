@@ -1,3 +1,5 @@
-<div ng-controller="dashboardCtrl">
-<h1>{{dashboardName}}</h1>
+<div ng-controller="dashboardCtrl as dc" style="margin-top: 70px;">
+    <h1>{{dc.dashboardName}}</h1>
+    <list names="names"></list>
+    <button ng-click="dc.doSomething()">Click me</button>
 </div>

@@ -3,6 +3,7 @@
 // Modules
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
+//require('ng-annotate');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');

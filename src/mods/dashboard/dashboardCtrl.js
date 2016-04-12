@@ -1,8 +1,12 @@
-class dashboardCtrl{
-  constructor($scope){
-    console.log($scope);
-    $scope.dashboardName = 'This is dashboard!';
+export default class dashboardCtrl{
+  constructor(DashboardServ){
+    //console.log(DashboardServ);
+    this.DashboardServ = DashboardServ;
+    this.dashboardName = 'This is dashboard!';
+  }
+  doSomething(){
+        let a = this.DashboardServ.getSomething();
+        console.log(a);
   }
 }
-dashboardCtrl.$inject = ['$scope'];
-export default dashboardCtrl;
+dashboardCtrl.$inject = ['DashboardServ'];

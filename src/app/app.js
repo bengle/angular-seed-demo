@@ -4,17 +4,27 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import mainCtrl from './mainCtrl';
 import dashboard from '../mods/dashboard/dashboard';
-//import indexTpl from './app.html';
+import headerTpl from '../public/head_nav.html';
+import indexTpl from './app.html';
 
-let config = function($stateProvider,$urlRouterProvider,$locationProvider){
+import mockApp from '../mods/data/index';
+
+let config = ($stateProvider,$urlRouterProvider,$locationProvider) => {
   $locationProvider.html5Mode(true);
   $stateProvider.state('default',{
     url:'/',
-    template:require('./app.html')
+    views:{
+        'header':{
+            template:headerTpl
+        },
+        'main':{
+            template:indexTpl
+        }
+    }
   });
   $urlRouterProvider.otherwise("/");
 };
 config.$inject = ['$stateProvider','$urlRouterProvider','$locationProvider'];
-angular.module('logApp',[uiRouter,dashboard])
+angular.module('logApp',[uiRouter,dashboard,mockApp])
       .config(config)
       .controller('mainCtrl',mainCtrl);
