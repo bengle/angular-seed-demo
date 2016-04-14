@@ -205,5 +205,10 @@ module.exports = function makeWebpackConfig () {
     stats: 'minimal'
   };
 
+ config.externals = {
+     'angular':'angular',
+     'bootstrap':'bootstrap'
+ };
+
   return config;
 }();

@@ -8,7 +8,7 @@ import headerTpl from '../public/head_nav.html';
 import indexTpl from './app.html';
 
 import mockApp from '../mods/data/index';
-
+console.log(111);
 let config = ($stateProvider,$urlRouterProvider,$locationProvider) => {
   $locationProvider.html5Mode(true);
   $stateProvider.state('default',{
