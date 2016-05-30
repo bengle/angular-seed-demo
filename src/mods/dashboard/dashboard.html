@@ -1,5 +1,45 @@
 <div ng-controller="dashboardCtrl as dc" style="margin-top: 70px;">
-    <h1>{{dc.dashboardName}}</h1>
-    <list names="names"></list>
-    <button ng-click="dc.doSomething()">Click me</button>
+    <nav>
+        <a class="item" ng-click="dc.addModuleToPanel(0)" data-toggle="modal" data-target="#myModal">
+            <img src="img/Line_chart.png" title="折线图">
+        </a>
+        <a class="item">
+            <img src="img/Chart_column.png" title="柱状图">
+        </a>
+        <a class="item">
+            <img src="img/Piece_chart.png" title="饼图">
+        </a>
+        <a class="item">
+            <img src="img/table.png" title="表格">
+        </a>
+    </nav>
+    <div>
+        <list names="dc.names" action="dc.getAlert()"></list>
+    </div>
+    <div class="timepicker">
+        <input type="text" id="J_timepicker"/>
+    </div>
+    <div class="panel clearfix">
+        <div ng-repeat="m in dc.modules" 
+            class="module_wrap">
+            <line-chart ng-if="m.moduleType==1" modinfo="m.modInfo"></line-chart>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">编辑配置</h4>
+                </div>
+                <div class="modal-body">
+                    <h1>随便编辑点儿啥</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" ng-click="dc.addLinechartPanel()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

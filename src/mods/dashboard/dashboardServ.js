@@ -1,10 +1,11 @@
-import angular from 'angular'
+import angular from 'angular';
 class DashboardServ{
-    constructor($http){}
-    getSomething(){
-        //$http.get();
-        console.log('start get something');
-        return true;
+    constructor($http){
+        this.$http = $http;
+    }
+    saveLinechartPanel(callback){
+        //console.log(111);
+        callback();
     }
 }
 export default angular.module('dashboard.service',[])

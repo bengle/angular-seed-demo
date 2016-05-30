@@ -1,5 +1,10 @@
 <div>
 <ul>
-  <li ng-repeat="n in names" ng-mouseenter="changeColor($event)" ng-mouseleave="reverseColor($event)">{{n.name}}</li>
+  <li ng-repeat="n in names" 
+    ng-click="action()" 
+    ng-mouseenter="changeColor($event)" 
+    ng-mouseleave="reverseColor($event)">
+    {{n}}
+  </li>
 </ul>
 </div>

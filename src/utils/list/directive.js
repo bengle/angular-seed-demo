@@ -7,11 +7,13 @@ class List{
     this.replace = true;
     this.template = ntpl;
     this.scope = {
-        names:'='
+        names:'=',
+        action:'&'
     };
   }
   link(scope){
-      scope.names=[{name:'Tom'},{name:'Jack'},{name:'Rose'}];
+      //scope.names=[{name:'Tom'},{name:'Jack'},{name:'Rose'}];
+      
       scope.changeColor = e => {
           let self = e.currentTarget;
           self.style.backgroundColor = '#f10000';
@@ -19,6 +21,11 @@ class List{
       scope.reverseColor = e => {
           let self = e.currentTarget;
           self.style.backgroundColor = '#fff';
+      }
+      scope.getAlert = () => {
+          //debugger
+          console.log(scope.lsalert);
+          scope.lsalert();
       }
   }
 }

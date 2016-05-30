@@ -15,6 +15,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ENV = process.env.npm_lifecycle_event;
 var isTest = ENV === 'test' || ENV === 'test-watch';
 var isProd = ENV === 'build';
+//let extractLESS = new ExtractTextPlugin('[name].[hash].less');
+let extractCSS = new ExtractTextPlugin('[name].[hash].css');
 
 module.exports = function makeWebpackConfig () {
   /**
@@ -97,21 +99,23 @@ module.exports = function makeWebpackConfig () {
       //
       // Reference: https://github.com/postcss/postcss-loader
       // Postprocess your css with PostCSS plugins
-      test: /\.css$/,
+      test: /\.(less|css)$/,
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files in production builds
       //
       // Reference: https://github.com/webpack/style-loader
       // Use style-loader in development.
-      loader: isTest ? 'null' : ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
-    }, {
+      loader: isTest ? 'null' : extractCSS.extract('style','css!less')
+    },
+    {test: /\.(jpg|png)$/, loader: "url?limit=8192"},
+    {
       // ASSET LOADER
       // Reference: https://github.com/webpack/file-loader
       // Copy png, jpg, jpeg, gif, svg, woff, woff2, ttf, eot files to output
       // Rename the file using the asset hash
       // Pass along the updated reference to your code
       // You can add here any file extension you want to get copied to your output
-      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+      test: /\.(svg|woff|woff2|ttf|eot)$/,
       loader: 'file'
     }, {
       // HTML LOADER
@@ -168,7 +172,8 @@ module.exports = function makeWebpackConfig () {
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files
       // Disabled when in test mode or not in build mode
-      new ExtractTextPlugin('[name].[hash].css', {disable: !isProd})
+      extractCSS
+      //extractLESS
     )
   }
 

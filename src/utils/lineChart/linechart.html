@@ -1,0 +1,32 @@
+<div class="chart_wrap clearfix">
+    <div class="chart_handler">
+        <a>
+            <i class="fa fa-cog fa-2"></i>
+        </a>
+        <button class="edit_btn" ng-click="lc.openLinechartEdit()">编辑</button>
+    </div>
+    <ng-echarts 
+        class="col-md-6 echarts chart_box" 
+        ec-config="lc.lineConfig" 
+        ec-option="lc.lineOption">
+    </ng-echarts>
+    <div class="modal fade" id="linechartEditPanel" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">编辑配置</h4>
+                </div>
+                <div class="modal-body">
+                    <h1>随便编辑点儿啥</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" ng-click="lc.addLinechartPanel()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
